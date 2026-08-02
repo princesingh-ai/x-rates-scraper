@@ -1,0 +1,6 @@
+# Virtual environment
+.venv/
+
+# Output files
+output/
+*.csv
