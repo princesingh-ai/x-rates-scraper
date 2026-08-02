@@ -1,0 +1,111 @@
+X-Rates Historical Currency Scraper
+===================================
+
+Historical Exchange Rate Scraper using BeautifulSoup and Pandas
+
+Overview
+--------
+
+X-Rates Scraper is a simple Python application that retrieves historical
+exchange rates from x-rates.com and exports them into a CSV file.
+
+The application accepts a base currency and a date range, downloads the
+historical exchange rate table for each day, parses the HTML using
+BeautifulSoup, and stores the collected data using Pandas.
+
+Repository Structure
+--------------------
+
+x-rates-scraper/
+├── output/                # Generated CSV files
+├── .dockerignore
+├── .gitignore
+├── .python-version
+├── compose.yaml
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── main.py
+├── pyproject.toml
+└── uv.lock
+
+Requirements
+------------
+
+* Python 3.12+
+* uv
+* Docker (Optional)
+
+Installation
+------------
+
+Clone the repository.
+
+    git clone https://github.com/princesingh-ai/x-rates-scraper.git
+
+Move into the project directory.
+
+    cd x-rates-scraper
+
+Install the project dependencies.
+
+    uv sync
+
+Running
+-------
+
+Run the application.
+
+    uv run python main.py
+
+Example
+
+    Currency: USD
+    Start Date (YYYY-MM-DD): 2024-01-01
+    End Date (YYYY-MM-DD): 2024-01-07
+
+The generated CSV file will be saved in:
+
+    output/
+
+Docker
+------
+
+Build the image.
+
+    docker build -t x-rates-scraper .
+
+Run the container.
+
+    docker run -it \
+    -v $(pwd)/output:/app/output \
+    x-rates-scraper
+
+Docker Compose
+--------------
+
+Build
+    docker compose build
+
+Run
+    docker compose run --rm xrates-scraper
+
+References
+----------
+
+1. X-Rates Historical Exchange Rates
+   https://www.x-rates.com/historical/
+
+2. BeautifulSoup Documentation
+   https://www.crummy.com/software/BeautifulSoup/
+
+3. Requests Documentation
+   https://requests.readthedocs.io/
+
+4. Pandas Documentation
+   https://pandas.pydata.org/
+
+License
+-------
+
+This project is licensed under the MIT License.
