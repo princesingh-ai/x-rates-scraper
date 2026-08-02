@@ -1,0 +1,10 @@
+services:
+  xrates-scraper:
+    build: .
+    container_name: xrates-scraper
+
+    stdin_open: true
+    tty: true
+
+    volumes:
+      - ./output:/app/output
