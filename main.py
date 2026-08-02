@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from datetime import datetime, timedelta
 import pandas as pd
+import os
 
 currency = input("Currency: ")
 start_date = input("Start Date (YYYY-MM-DD): ")
@@ -42,8 +43,12 @@ while current <= end:
     current+= timedelta(days=1)
 
 # pandas
-data_frame = pd.DataFrame(data)
-filename = f"xrates_{currency}_{start_date}_to_{end_date}.csv"
-data_frame.to_csv(filename, index=False)
+# Create output directory if it doesn't exist
+os.makedirs("output", exist_ok=True)
 
+# Create DataFrame
+data_frame = pd.DataFrame(data)
+
+filename = f"output/xrates_{currency}_{start_date}_to_{end_date}.csv"
+data_frame.to_csv(filename, index=False)
 print(f"Data saved in {filename}.")
